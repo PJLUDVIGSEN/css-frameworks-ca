@@ -1,4 +1,8 @@
-.test {
-  display:none;
-  color: blue;
-}
+// Variable overrides
+@import "../scss/variables";
+
+// Bootstray Styles
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+// Original styles
+@import "./components/globalstyles";
