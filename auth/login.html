@@ -10,10 +10,10 @@
 </head>
 
 <body>
-  <header class="p-3 text-bg-dark posts">
+  <header class="p-3 text-bg-dark headerbox">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">CA
           <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
             <use xlink:href="#bootstrap"></use>
           </svg>
@@ -21,7 +21,7 @@
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="../index.html" class="nav-link px-2 text-secondary">Home</a></li>
-          <li><a href="/pages/profile.html" class="nav-link px-2 text-white">My profile</a></li>
+          <li><a href="/auth/profile.html" class="nav-link px-2 text-secondary">My profile</a></li>
         </ul>
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -37,16 +37,16 @@
     </div>
   </header>
   <div class="posts mt-5">
-    <form action = "profile.html" class="posts">
+    <form action = "/auth/profile.html" class="posts">
       <img class="mb-4 myimg myform mt-3" src="/images/eye-tracking.png" alt="" width="80" height="80">
       <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
     
       <div class="form-floating">
-        <input type="email" id="login" name="login" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <input type="email" id="login" required="required" name="login" class="form-control" id="floatingInput" placeholder="name@example.com">
         <label for="floatingInput">Email address</label>
       </div>
       <div class="form-floating mt-2">
-        <input type="password" id="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+        <input type="password" id="password" required="required" name="password" class="form-control" id="floatingPassword" placeholder="Password">
         <label for="floatingPassword">Password</label>
       </div>
     
@@ -63,7 +63,7 @@
       <p class="col-md-4 mb-0 text-muted">© 2022 Company, Inc</p>
       <ul class="nav col-md-4 justify-content-end">
         <li class="nav-item"><a href="../index.html" class="nav-link px-2 text-muted">Home</a></li>
-        <li class="nav-item"><a href="/pages/profile.html" class="nav-link px-2 text-muted">My Profile</a></li>
+        <li class="nav-item"><a href="/auth/profile.html" class="nav-link px-2 text-muted">My Profile</a></li>
       </ul>
     </footer>
   </div>
