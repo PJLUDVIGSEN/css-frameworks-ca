@@ -10762,6 +10762,15 @@ textarea.form-control-lg {
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
+  margin: 10px;
+}
+
+.headerbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .post {

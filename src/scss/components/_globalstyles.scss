@@ -3,6 +3,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
+  margin: 10px;
+}
+
+.headerbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .post {
@@ -33,6 +42,7 @@
   margin: 0 auto;
 }
 
-.myProfile {
-
-}
+// .myProfile {
+//   box-sizing: border-box;
+//   margin: 10px;
+// }
