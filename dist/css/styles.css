@@ -10788,10 +10788,32 @@ textarea.form-control-lg {
 
 .post {
   display: flex;
+  flex-direction: column;
   box-sizing: border-box;
   max-width: 500px;
-  min-width: 500px;
   justify-content: center;
+  width: 100%;
+}
+
+#selecter {
+  text-align-last: right;
+  padding-right: 29px;
+  direction: rtl;
+  max-width: 200px;
+}
+
+.lbl {
+  max-width: 40px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+}
+
+.sizer {
+  flex-grow: 1;
+  min-width: 0px;
 }
 
 .formsize {

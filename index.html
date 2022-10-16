@@ -8,36 +8,10 @@
   <title>Social Media Platform</title>
   <link rel="stylesheet" href="/dist/css/styles.css">
   <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
-  <script src="/js/login.mjs" defer type="module"></script>
+  <script src="/js/index.mjs" defer type="module"></script>
 </head>
 
 <body>
-  <header class="p-3 text-bg-dark headerbox">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">CA
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-            <use xlink:href="#bootstrap"></use>
-          </svg>
-        </a>
-
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="../postfeed.html" class="nav-link px-2 text-secondary">Home</a></li>
-          <li><a href="profile.html" class="nav-link px-2 text-secondary">My profile</a></li>
-        </ul>
-
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-          <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..."
-            aria-label="Search">
-        </form>
-
-        <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2">Login</button>
-          <button type="button" class="btn btn-warning">Sign-up</button>
-        </div>
-      </div>
-    </div>
-  </header>
   <div class="posts mt-5">
     <form method="post" class="posts regForm">
       <img class="mb-4 myimg myform mt-3" src="/images/eye-tracking.png" alt="" width="80" height="80">
@@ -70,18 +44,11 @@
           <input type="checkbox" value="remember-me"> Remember me
         </label>
       </div>
-      <button id="loginBtn" class="w-100 btn btn-lg btn-warning" type="submit">Login</button>
+      <button id="loginBtn" class="w-100 btn btn-lg btn-warning">Login</button>
       <button id="signupBtn" class="w-100 mt-1 btn btn-lg btn-dark" type="button">Sign-up</button>
     </form>
   </div>
   <div class="container">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-      <p class="col-md-4 mb-0 text-muted">© 2022 Company, Inc</p>
-      <ul class="nav col-md-4 justify-content-end">
-        <li class="nav-item"><a href="../postfeed.html" class="nav-link px-2 text-muted">Home</a></li>
-        <li class="nav-item"><a href="profile.html" class="nav-link px-2 text-muted">My Profile</a></li>
-      </ul>
-    </footer>
   </div>
 </body>
 

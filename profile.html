@@ -71,21 +71,23 @@
   </div>
     <form id="createForm" class="posts flex-column pt-2">
       <h1>What is on your mind?</h1>
-      <div class="form-group container-sm post flex-row col-xs-4 col-sm-2 sizer">
-        <label class="" for="title">Title</label>
-        <input type="title" name="title" class="form-control ms-3 sm col-xs-4 col-sm-2" required>
+      <div class="d-flex form-group container-sm post sizer">
+        <label class="lbl" for="title">Title</label>
+        <input type="title" placeholder="I love Breaking Bad..." name="title" class=" w-100 mb-2 form-control" required>
       </div>
-      <div class="form-group container-sm post flex-row col-xs-4 col-sm-2 sizer">
-        <label class="" for="media">Media</label>
-        <input   type="url" name="media" class="form-control ms-3">
+      <div class="d-flex form-group container-sm post sizer">
+        <label class="lbl" for="media">Image</label>
+        <input type="url" placeholder="https//:camper-van.png..." name="media" class=" w-100 mb-2 form-control">
       </div>
-      <div class="form-group container-sm post flex-row col-xs-4 col-sm-2 sizer">
-        <label class="" for="tags">Tags</label>
-        <input type="text" name="tags" class="form-control ms-3">
+      <div class="d-flex form-group container-sm post sizer">
+        <label class="lbl" for="tags">Tags</label>
+        <input type="text" placeholder="meth, drugs, science..." name="tags" class=" w-100 mb-2 form-control">
       </div>
-      <div class="form-group container-sm post flex-column sizer">
-        <label class="pt-2" for="body">Body</label>
-        <textarea class="form-control " name="body" id="body" rows="3"></textarea>
+      <div class="d-flex form-group container-sm post flex-column sizer">
+        <label class="lbl" for="body">Body</label>
+        <textarea class="form-control"
+          placeholder="My name is Walter Hartwell White. I live at 308 Negra Aroya Lane, Albuquerque, New Mexico, 87104. To all law enforcement entities, this is not an admission of guilt..."
+          name="body" id="body" rows="3"></textarea>
         <button type="submit" id="postBtn" class="btn btn-dark mt-2 bttn postBtn">Create post</button>
         <button type="button" id="cancel" class="btn btn-danger mt-2 hidden cancelBtn bttn">Cancel edit</button>
       </div>

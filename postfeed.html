@@ -22,9 +22,10 @@
           <li><a href="profile.html" class="nav-link px-2 text-secondary">My profile</a></li>
         </ul>
   
-        <form class=" d-flex col-12 col-lg-auto mb-3 search mb-lg-0 me-lg-3" role="search">
+        <form id="searchForm" class=" d-flex col-12 col-lg-auto mb-3 search mb-lg-0 me-lg-3" role="search">
           <input id="searchInput" name="search" type="text" class="form-control form-control-dark text-bg-dark d-flex " placeholder="Search post..."
             aria-label="Search">
+            <button id="searchBtn" class="btn btn-outline-light" type="button">Search</button>
         </form>
   
         <div class="text-end">
@@ -37,27 +38,26 @@
     <form id="createForm" class="posts flex-column pt-2">
       <h1>What is on your mind?</h1>
       <div class="d-flex form-group container-sm post sizer">
-        <label class=" mb-2 d-flex align-items-center justify-content-start w-25" for="title">Title</label>
+        <label class="lbl" for="title">Title</label>
         <input type="title" placeholder="I love Breaking Bad..." name="title" class=" w-100 mb-2 form-control" required>
       </div>
       <div class="d-flex form-group container-sm post sizer">
-        <label class="mb-2 d-flex align-items-center justify-content-start w-25" for="media">Image</label>
+        <label class="lbl" for="media">Image</label>
         <input type="url" placeholder="https//:camper-van.png..." name="media" class=" w-100 mb-2 form-control">
       </div>
       <div class="d-flex form-group container-sm post sizer">
-        <label class="pr-3 mb-2 d-flex align-items-center justify-content-start w-25" for="tags">Tags</label>
+        <label class="lbl" for="tags">Tags</label>
         <input type="text" placeholder="meth, drugs, science..." name="tags" class=" w-100 mb-2 form-control">
       </div>
       <div class="d-flex form-group container-sm post flex-column sizer">
-        <label class="pr-3 mb-2 d-flex align-items-center" for="body">Body</label>
+        <label class="lbl" for="body">Body</label>
         <textarea class="form-control" placeholder="My name is Walter Hartwell White. I live at 308 Negra Aroya Lane, Albuquerque, New Mexico, 87104. To all law enforcement entities, this is not an admission of guilt..." name="body" id="body" rows="3"></textarea>
         <button type="submit" id="postBtn" class="btn btn-dark mt-2 bttn postBtn">Create post</button>
         <button type="button" id="cancel" class="btn btn-danger mt-2 hidden cancelBtn bttn">Cancel edit</button>
       </div>
-      <select class="w-25 d-flex form-control form-control-sm mt-2">
-        <option class="newest">Sort Newest to Oldest</option>
-        <option class="oldest">Sort Oldest to Newest</option>
-        <option class="mostComments">Most comments</option>
+      <select id="selecter" class="bg-dark text-white d-flex form-control form-control-sm mt-2 select">
+        <option class="opt" value="val1" id="newest">Sort Newest to Oldest</option>
+        <option class="opt" value="val2" id="oldest">Sort Oldest to Newest</option>
       </select>
     </form>
   <div class="allPosts posts">
@@ -140,6 +140,6 @@
     </footer>
   </div>
   <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="/js/index.mjs" defer type="module"></script>
+  <script src="/js/postfeed.mjs" defer type="module"></script>
 </body>
 </html>
