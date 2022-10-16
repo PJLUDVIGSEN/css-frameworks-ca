@@ -1,12 +1,15 @@
 import { API_SOCIAL_URL } from "../constants.mjs";
 import * as storage from "../../handlers/storage.mjs"
-
 const action = "/auth/login";
 const method = "post";
 
+/**
+ * Authenticates userlogin and creates an object that can store the uservalues in local.storage
+ * @param {object} profile 
+ */
+
 export async function login(profile) {
   const userUrl = API_SOCIAL_URL + action;
-
   const response = await fetch(userUrl, {
     headers: {
       "Content-Type": "application/json"
@@ -14,7 +17,6 @@ export async function login(profile) {
     method,
     body: JSON.stringify(profile)
   })
-  console.log(profile);
 
   const {accessToken, ...user} = await response.json()
   storage.save("token", accessToken);

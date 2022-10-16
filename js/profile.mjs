@@ -5,7 +5,6 @@ import { authFetch } from "../js/api/authFetch.mjs";
 import { load } from "./handlers/storage.mjs";
 import { API_SOCIAL_URL_POSTS, postLength } from "./api/constants.mjs";
 
-
 const userName = load("user").name;
 
 const postFeed = document.querySelector(".postFeed");
@@ -23,7 +22,6 @@ export async function myProfile() {
                                   <h4 class="mt-0">${postData[i].title}</h4>
                                   <p class="card-text mb-0">${postData[i].body}</p>
                                   <p class="card-text"><small class="text-muted">${postData[i].tags}</small></p>
-                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                 </div>
                             </a>`;
   }
@@ -36,13 +34,3 @@ let postBtn = document.querySelector(".postBtn");
 const updateBtn = document.querySelectorAll(".updateBtn");
 
 postBtn.addEventListener("click", createFormListener());
-
-export async function myProfileDetails() {
-  const postData = await getProfilePosts();
-  console.log(postData)
-  for (let i = 0; i < postData.length; i++) {
-    if (postData[i].author.name === userName)
-      postFeed.innerHTML += ` `;
-  }
-}
-myProfileDetails();

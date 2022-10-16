@@ -21,12 +21,24 @@ const searchInput = document.getElementById("searchInput");
 const postBtn = document.querySelector("#postBtn");
 const select = document.getElementById("selecter");
 
+/**
+ * @param  {element} postBtn button for click event
+ * @param  {event} postBtn.addEventListener if postbutton is clicked run createFormListener which creates the post
+ */
 if (postBtn) {
   postBtn.addEventListener("click", () => {
     createFormListener();
   });
 }
 
+
+
+/**function which accepts a url that connects to the api to retrive the api response and populate the postfeed with user posts
+ * @param  {string} url variable to access api
+ * @param  {function} displayPosts calls the authenticated fetch of the api request to populate the post on the page
+ * @param  {*}  postData.length loops through postdata from api response and populates the container with postdata attributes in html format for the feed
+
+ */
 export async function displayPosts(url) {
   const response = await authFetch(url, {
     method,
@@ -53,6 +65,13 @@ export async function displayPosts(url) {
 
 displayPosts(API_SOCIAL_URL_POSTS);
 
+
+/**function which accepts a url that connects to the api to retrive the api response and populate the postfeed with user posts with the input of the searchfield
+ * @param  {object} posts variable to target posts
+ * @param  {function} d posts.forEach calls the authenticated fetch of the api request to populate the post on the page
+ * @param  {*}  posts.forEach loops through postdata from api response and populates the container with postdata attributes in html format for the feed
+
+ */
 export function renderPosts(posts) {
   const container = document.querySelector(".allPosts");
   container.innerHTML = "";
@@ -69,13 +88,16 @@ export function renderPosts(posts) {
                                     <label class="" for="exampleFormControlTextarea1"></label>
                                     <textarea class="form-control " id="exampleFormControlTextarea1" rows="1"></textarea>
                                     <button type="button" class="btn btn-dark mt-2 btn-sm">Comment</button>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                     <p class="card-text"><small class="text-muted">Post-id: ${post.id}</small></p>
                                   </div>
                                 </div>`;
   });
 }
 
+
+/**function which uses a url to search for posts with  the specific url parameters
+ * @param  {function}  searchPosts uses the response of the api request to filter the postfeed to the search input value on postfeed.html
+ */
 async function goSearch() {
   const url = API_SOCIAL_URL_POSTS + postLength;
   const result = await authFetch(url);
@@ -83,33 +105,40 @@ async function goSearch() {
   searchPosts(response);
 }
 
+
+/**
+ * @param  {element} searchBtn searchbtn used to submit search requests on the postfeed
+ * @param  {event} addEventListener listens for the submit of the search input to initiate the goSearch function to filter posts
+ */
 const searchBtn = document.getElementById("searchBtn");
 if (searchBtn) {
   document.getElementById("searchBtn").addEventListener("submit", goSearch());
 }
 
-export function lol() {
+
+/** function to filter posts on the postfeed by ascending or descending order
+ * @param  {element} select contains the options you can filter by
+ * @param  {element} document.getElementById adds a onchange event which registeres which option the user has chosen to filter the postfeed by
+ * @param  {} document.getElementById
+ * @param  {function} displayPosts the parameter entered into this function determines which order the feed is sorted by
+ */
+export function filterThePosts() {
   const select = document.getElementById("selecter");
 
   if (select)
     document.getElementById("selecter").onchange = function (event) {
-      console.log(event);
       const selectValue = event.target.value;
-      console.log(selectValue);
-
       if (selectValue === "val1") {
         const api = API_SOCIAL_URL_POSTS + sortDsc;
         posts.innerHTML = "";
         displayPosts(api);
-        console.log(select.value);
       }
       if (selectValue === "val2") {
         let api = API_SOCIAL_URL_POSTS;
         posts.innerHTML = "";
         displayPosts(api + sortAsc);
-        console.log(select.value);
       }
     };
 }
 
-lol();
+filterThePosts();

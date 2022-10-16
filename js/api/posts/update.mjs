@@ -1,10 +1,16 @@
 import { API_SOCIAL_URL } from "../constants.mjs";
-
 import { authFetch } from "../authFetch.mjs";
 
 const action = "/posts" ;
 const method = "put";
 
+
+/**
+ * @param  {object} postData Object with data created from form inputs
+ * @param  {string} updatePostURL url to the api with parameters to target
+ * @param  {string} method "put" which allows a user with authentication to edit postdata
+ * @returns {object} returns updated object with postdata
+ */
 export async function updatePost(postData) {
   const updatePostURL = `${API_SOCIAL_URL}${action}/${postData.id}`;
 

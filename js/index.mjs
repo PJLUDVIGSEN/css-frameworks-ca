@@ -11,10 +11,14 @@ const loginText = "Login";
 const passwordWarning = document.querySelector(".passwordCheck");
 const password = document.querySelector("#password");
 const passwordConfirm = document.querySelector("#passwordConfirm");
-const name = document.querySelector("#name");
-const reqGroup = document.querySelectorAll(".req");
 
-// Show signupForm and change buttonText to fit behaviour
+
+
+/** Function to change formimputs to suit registration or login functionality: 
+ *  creating a user, or logging with an existing one.
+ * @param  {event} "click"" listens to the signup button to change the form to registration
+ * @param  {function} regForm runs a forEach function to change display property of form elements.
+ */
 signupBtn.addEventListener("click", function regForm() {
   regAdds.forEach((element) => {
     element.classList.toggle("hidden");
@@ -33,6 +37,17 @@ signupBtn.addEventListener("click", function regForm() {
   }
 });
 
+
+
+/**
+ * @param  {event} "click" clickevent to run function
+ * @param  {function} formChanger runs on "click" event and determines to execute a login or registration request to the API if the right criteria are met.
+ * @param  {function} loginFormListener function creates an object fromt he form inputs
+ * @param  {function} registerFormListener function creates an object from the form inputs and creates an account
+ * @param  {string} loginBtn.textContent the login button clicked with the different text-content values determines which function gets called
+ * @param  {function} checkPasswords checks for correct password input before running user registration
+ * 
+ */
 loginBtn.addEventListener("click", function formChanger() {
   if (loginBtn.textContent === loginText) {
     loginFormListener();
@@ -47,6 +62,12 @@ loginBtn.addEventListener("click", function formChanger() {
   }
 });
 
+
+
+/**
+ * function to determine if registration of user-password is correct
+ * @param  {password} passwordConfirm.value checks for correct password value from input
+ */
 export function checkPasswords() {
   if (passwordConfirm.value === password.value) {
     return true;
