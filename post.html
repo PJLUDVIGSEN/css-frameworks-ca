@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Social Media Platform</title>
   <link rel="stylesheet" href="/dist/css/styles.css">
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="/js/post.mjs" type="module" defer></script>
 </head>
 
 <body>
@@ -20,7 +22,7 @@
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="../index.html" class="nav-link px-2 text-secondary">Home</a></li>
+          <li><a href="../postfeed.html" class="nav-link px-2 text-secondary">Home</a></li>
           <li><a href="profile.html" class="nav-link px-2 text-white">My profile</a></li>
         </ul>
 
@@ -30,8 +32,8 @@
         </form>
 
         <div class="text-end">
-          <a href="login.html"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
-          <a href="login.html"><button type="button" class="btn btn-warning">Sign-up</button></a>
+          <a href="index.html"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
+          <a href="index.html"><button type="button" class="btn btn-warning">Sign-up</button></a>
         </div>
       </div>
     </div>
@@ -67,43 +69,33 @@
       </ul>
     </div>
   </div>
-  <form class="posts flex-column pt-2">
-    <div class="form-group container-sm post flex-column">
-      <label class="pt-2" for="exampleFormControlTextarea1"></label>
-      <textarea class="form-control " id="exampleFormControlTextarea1" rows="3"></textarea>
-      <button type="button" class="btn btn-dark mt-2">Create post</button>
+    <form id="createForm" class="posts flex-column pt-2 hidden">
+      <h1>What is on your mind?</h1>
+      <div class="d-flex form-group container-sm post sizer">
+        <label class="lbl" for="title">Title</label>
+        <input type="title" name="title" class=" w-100 mb-2 form-control" required>
+      </div>
+      <div class="d-flex form-group container-sm post sizer">
+        <label class="lbl" for="media">Image</label>
+        <input type="url" name="media" class=" w-100 mb-2 form-control">
+      </div>
+      <div class="d-flex form-group container-sm post sizer">
+        <label class="lbl" for="tags">Tags</label>
+        <input type="text" name="tags" class=" w-100 mb-2 form-control">
+      </div>
+    <div class="d-flex form-group container-sm post flex-column sizer">
+      <label class="lbl" for="body">body</label>
+      <textarea class="form-control " name="body" id="body" rows="3"></textarea>
+      <button id="postBtn" class="btn btn-success mt-2 bttn postBtn">Edit post</button>
+      <button type="button" id="cancel" class="btn btn-dark btn-success mt-2 hidden cancelBtn bttn">CANCEL EDIT</button>
+      <button type="button" id="delete" class="btn btn-danger mt-2 hidden deleteBtn bttn">DELETE POST</button>
     </div>
   </form>
   <div class="posts">
-    <div class="media mt-3 mb-3 post card p-2">
-      <img class="mr-3 rounded-circle" src="/images/johnwick.png" width="40" height="40"
-        alt="Generic placeholder image">
-      <div class="media-body">
-        <h5 class="mt-0">John Wick</h5>
-        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
-        vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
-        lacinia
-        congue felis in faucibus.
-        <label class="pt-2" for="exampleFormControlTextarea1"></label>
-        <textarea class="form-control " id="exampleFormControlTextarea1" rows="1"></textarea>
-        <button type="button" class="btn btn-dark mt-2 btn-sm">Comment</button>
-      </div>
-    </div>
-    <div class="media mt-3 mb-3 post card p-2">
-      <img class="mr-3 rounded-circle" src="/images/johnwick.png" width="40" height="40"
-        alt="Generic placeholder image">
-      <div class="media-body">
-        <h5 class="mt-0">John Wick</h5>
-        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
-        vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
-        lacinia
-        congue felis in faucibus.
-        <label class="pt-2" for="exampleFormControlTextarea1"></label>
-        <textarea class="form-control " id="exampleFormControlTextarea1" rows="1"></textarea>
-        <button type="button" class="btn btn-dark mt-2 btn-sm">Comment</button>
-      </div>
-    </div>
-    <div class="media mt-3 mb-3 post card p-2">
+    <button class="btn btn-dark mt-2 btn-sm bttn updateBtn">Edit Post</button>
+  </div>
+  <div class="posts postFeed">
+    <!-- <div class="media mt-3 mb-3 post card p-2">
       <img class="mr-3 rounded-circle" src="/images/johnwick.png" width="40" height="40"
         alt="Generic placeholder image">
       <div class="media-body">
@@ -123,11 +115,9 @@
             Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
             vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
             lacinia congue felis in faucibus.
-            <label class="pt-2" for="exampleFormControlTextarea1"></label>
-            <textarea class="form-control " id="exampleFormControlTextarea1" rows="1"></textarea>
-            <button type="button" class="btn btn-dark mt-2 btn-sm">Comment</button>
           </div>
         </div>
+        <a class="btn btn-dark mt-2 btn-sm bttn updateBtn" href="#createForm">edit post</a>
       </div>
     </div>
     <div class="card mb-3 pt-2 post">
@@ -139,12 +129,10 @@
         <p class="card-text mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam cum autem harum ut
           quisquam commodi aspernatur quis cupiditate, facilis doloremque eum expedita laboriosam veritatis libero
           deleniti quae soluta? Esse, quibusdam.</p>
-        <label class="" for="exampleFormControlTextarea1"></label>
-        <textarea class="form-control " id="exampleFormControlTextarea1" rows="1"></textarea>
-        <button type="button" class="btn btn-dark mt-2 btn-sm">Comment</button>
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <a class="btn btn-dark mt-2 btn-sm bttn updateBtn" href="#createForm">edit post</a>
       </div>
-    </div>
+    </div> -->
   </div>
   <div class="container">
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
@@ -158,12 +146,11 @@
       </a>
 
       <ul class="nav col-md-4 justify-content-end">
-        <li class="nav-item"><a href="../index.html" class="nav-link px-2 text-muted">Home</a></li>
-        <li class="nav-item"><a href="/auth/profile.html" class="nav-link px-2 text-muted">My Profile</a></li>
+        <li class="nav-item"><a href="../postfeed.html" class="nav-link px-2 text-muted">Home</a></li>
+        <li class="nav-item"><a href="profile.html" class="nav-link px-2 text-muted">My Profile</a></li>
       </ul>
     </footer>
   </div>
-  <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
