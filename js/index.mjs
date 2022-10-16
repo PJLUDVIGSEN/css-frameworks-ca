@@ -1,74 +1,56 @@
-import { API_SOCIAL_URL_POSTS } from "./api/constants.mjs";
-import { authFetch } from "./api/authFetch.mjs";
-import { createFormListener } from "./handlers/createPost.mjs";
-import { getPost, getPosts, getProfilePosts, searchPosts } from "./api/posts/read.mjs";
+import { registerFormListener } from "./handlers/registeruser.mjs";
+import { loginFormListener } from "./handlers/login.mjs";
+import { removePost } from "./api/posts/delete.mjs";
+import * as post from "./api/posts/index.mjs";
 
-const posts = document.querySelector(".allPosts");
-const method = "get";
-const mediaDiv = document.querySelector("#mediaDiv");
-const avatar = document.querySelector(".avatar")
-const searchBtn = document.querySelector("#search");
+const signupBtn = document.querySelector("#signupBtn");
+const loginBtn = document.querySelector("#loginBtn");
+const regAdds = document.querySelectorAll(".reg");
+const signupText = "Sign-up";
+const loginText = "Login";
+const passwordWarning = document.querySelector(".passwordCheck");
+const password = document.querySelector("#password");
+const passwordConfirm = document.querySelector("#passwordConfirm");
+const name = document.querySelector("#name");
+const reqGroup = document.querySelectorAll(".req");
 
-
-export async function displayPosts(url) {
-  const response = await authFetch(url, {
-    method,
+// Show signupForm and change buttonText to fit behaviour
+signupBtn.addEventListener("click", function regForm() {
+  regAdds.forEach((element) => {
+    element.classList.toggle("hidden");
   });
-
-  const result = await response.json();
-  const postData = result;
-  for (let i = 0; i < postData.length; i++) {
-
-    posts.innerHTML += `<div class="card mb-3 pt-2 sizer">
-                          <img class="card-img-top mediaDiv hidden" id="mediaDiv" src="${postData[i].media}"  alt="Card image cap">
-                          <div class="card-body">
-                            <img class="mr-3 rounded-circle avatar" src="${postData[i].author.avatar}" onerror="this.src='/images/userimage.png'" width="40" height="auto" alt="Generic placeholder image">
-                            <h5 class="card-title">${postData[i].author.name}</h5>
-                            <h4 class="mt-0">${postData[i].title}</h4>
-                            <p class="card-text mb-0">${postData[i].body}</p>
-                            <label class="" for="exampleFormControlTextarea1"></label>
-                            <textarea class="form-control " id="exampleFormControlTextarea1" rows="1"></textarea>
-                            <button type="button" class="btn btn-dark mt-2 btn-sm">Comment</button>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                          </div>
-                        </div>`;
+  if (signupBtn.textContent.toLowerCase().includes(signupText.toLowerCase())) {
+    signupBtn.textContent = "Already Registered?";
+    loginBtn.textContent = "Create Account";
+    document.getElementById("name").required = true;
+    document.getElementById("passwordConfirm").required = true;
+  } else {
+    signupBtn.textContent = signupText;
+    loginBtn.textContent = loginText;
+    passwordWarning.classList.add("hidden");
+    document.getElementById("name").required = false;
+    document.getElementById("passwordConfirm").required = false;
   }
+});
 
+loginBtn.addEventListener("click", function formChanger() {
+  if (loginBtn.textContent === loginText) {
+    loginFormListener();
+  } else if (
+    loginBtn.textContent === "Create Account" &&
+    checkPasswords() === true
+  ) {
+    registerFormListener();
+  } else {
+    passwordWarning.classList.remove("hidden");
+    event.preventDefault();
+  }
+});
+
+export function checkPasswords() {
+  if (passwordConfirm.value === password.value) {
+    return true;
+  } else {
+    return false;
+  }
 }
-
-displayPosts(API_SOCIAL_URL_POSTS);
-
-
-export function renderPosts(posts) {
-  const container = document.querySelector(".allPosts");
-  container.innerHTML = "";
-
-  posts.forEach(function (post) {
-    container.innerHTML += `<div class="card mb-3 pt-2 post sizer">
-                                  <img class="card-img-top mediaDiv hidden" id="mediaDiv" src="${post.media}"  alt="Card image cap">
-                                  <div class="card-body">
-                                    <img class="mr-3 rounded-circle avatar" src="${post.author.avatar}" onerror="this.src='/images/userimage.png'" width="40" height="auto" alt="Generic placeholder image">
-                                    <h5 class="card-title">${post.author.name}</h5>
-                                    <h4 class="mt-0">${post.title}</h4>
-                                    <p class="card-text mb-0">${post.body}</p>
-                                    <label class="" for="exampleFormControlTextarea1"></label>
-                                    <textarea class="form-control " id="exampleFormControlTextarea1" rows="1"></textarea>
-                                    <button type="button" class="btn btn-dark mt-2 btn-sm">Comment</button>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                  </div>
-                                </div>`;
-  });
-}
-
-
-async function goSearch() {
-    const result = await authFetch(API_SOCIAL_URL_POSTS);
-    const response = await result.json();
-  
-    searchPosts(response);
-    renderPosts(response);
-    
-}
-
-goSearch();
-

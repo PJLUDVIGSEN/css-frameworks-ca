@@ -8,5 +8,7 @@ export function registerFormListener() {
     const formData = new FormData(form);
     const profile = Object.fromEntries(formData.entries());
     register(profile);
+    alert("Registration success, please log in")
+    window.location.replace("/index.html");
   });
 }

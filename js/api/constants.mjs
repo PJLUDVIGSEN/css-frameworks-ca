@@ -6,6 +6,8 @@ export const API_PROFILE_POSTS = "/profiles"
 export const postDetails = "?_author=true";
 export const fullDetails = "?_author=true&_comments=true&_reactions=true";
 export const postLength = "&limit=500";
+export const sortAsc = "&sortOrder=asc";
+export const sortDsc = "&sortOrder=desc"
 export const API_SOCIAL_URL = `${API_HOST_URL}${API_BASE}${API_SOCIAL_BASE}`;
 export const API_SOCIAL_URL_POSTS = `${API_HOST_URL}${API_BASE}${API_SOCIAL_BASE}${API_SOCIAL_POSTS}${postDetails}`;
 export const API_PROFILE = `${API_HOST_URL}${API_BASE}${API_SOCIAL_BASE}${API_PROFILE_POSTS}`;

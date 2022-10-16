@@ -8,7 +8,7 @@ import {
   postLength,
 } from "../constants.mjs";
 import { authFetch } from "../authFetch.mjs";
-import { renderPosts } from "../../index.mjs";
+import { renderPosts } from "../../postfeed.mjs";
 const action = "/posts";
 const method = "get";
 
@@ -20,7 +20,7 @@ export async function getPosts() {
   });
 
   const allPosts = await response.json();
-  console.log(allPosts)
+  console.log(allPosts);
   return allPosts;
 }
 
@@ -30,9 +30,9 @@ export async function getProfilePosts() {
   const response = await authFetch(getPostURL, {
     method,
   });
-
-  const allPosts = await response.json();
-  return allPosts;
+  console.log(getPostURL);
+  const profilePosts = await response.json();
+  return profilePosts;
 }
 
 export async function getPost(id) {
@@ -47,31 +47,31 @@ export async function getPost(id) {
   return singlePost;
 }
 
-async function postTemplate() {
-  const posts = await post.getPosts();
-  const post = posts.pop();
-  const postContainer = "";
-  // displayPost(url);
-}
+// async function postTemplate() {
+//   const posts = await post.getPosts();
+//   const post = posts.pop();
+//   const postContainer = "";
+//   // displayPost(url);
+// }
 
 export function searchPosts(posts) {
   const searchInput = document.getElementById("searchInput");
+  const searchForm = document.getElementById("searchForm");
 
-  searchInput.onkeyup = function (event) {
-    // console.log(event);
+  searchForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const searchValue = searchInput.value.trim().toLowerCase();
 
-    const searchValue = event.target.value.trim().toLowerCase();
-
-    const filteredPosts = posts.filter(function (post) {q 
+    const filteredPosts = posts.filter(function (post) {
       if (
         post.author.name.toLowerCase().startsWith(searchValue) ||
         post.title.toLowerCase().startsWith(searchValue) ||
-        post.body.toLowerCase().startsWith(searchValue)
+        post.body.toLowerCase().startsWith(searchValue) ||
+        post.id.toString().startsWith(searchValue)
       ) {
         return true;
       }
     });
-    console.log(filteredPosts)
     renderPosts(filteredPosts);
-  };
+  });
 }

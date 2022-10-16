@@ -31,7 +31,7 @@ export async function updateFormListener() {
 export async function fillForm(id) {
   const form = document.querySelector("#createForm");
       const post = await getPost(id);
-      
+      form.media.value = post.media;
       form.title.value = post.title;
       form.body.value = post.body;
       form.tags.value = post.tags;

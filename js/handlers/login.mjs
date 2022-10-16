@@ -8,5 +8,8 @@ export function loginFormListener() {
     const formData = new FormData(form);
     const profile = Object.fromEntries(formData.entries());
     login(profile);
+    console.log(profile)
+    alert("Login Success");
+    window.location.replace("/postfeed.html");
   });
 }
