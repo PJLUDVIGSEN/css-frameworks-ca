@@ -12,7 +12,6 @@ import { renderPosts } from "../../postfeed.mjs";
 const action = "/posts";
 const method = "get";
 
-
 /**
  * Get request to fetch all posts from the API
  * @param  {string} getPostURL
@@ -27,7 +26,6 @@ export async function getPosts() {
   const allPosts = await response.json();
   return allPosts;
 }
-
 
 /**
  * Getrequest to fetch posts with a specific parameter, in this case length of result.
@@ -62,7 +60,6 @@ export async function getPost(id) {
 
   return singlePost;
 }
-
 
 /**
  * Function to render specific results based on if the inputvalue inherit the values of a post from the api

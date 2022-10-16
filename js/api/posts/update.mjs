@@ -1,9 +1,8 @@
 import { API_SOCIAL_URL } from "../constants.mjs";
 import { authFetch } from "../authFetch.mjs";
 
-const action = "/posts" ;
+const action = "/posts";
 const method = "put";
-
 
 /**
  * @param  {object} postData Object with data created from form inputs
